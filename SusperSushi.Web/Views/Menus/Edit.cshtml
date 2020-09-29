@@ -1,0 +1,76 @@
+﻿@model MenuGerechtenViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Menu</h4>
+<hr />
+
+
+<form asp-action="Edit">
+    <div class="row">
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*Cannot change the primary key so we change the scaffolded view to put the Id in a hidden type.
+                This way we still receive it in our Action (and check what we receive), but it looks much cleaner*@
+            <input asp-for="Menu.Id" type="hidden" />
+            <div class="form-group">
+                <label asp-for="Menu.Id" class="control-label"></label>
+                @Html.DisplayFor(m => m.Menu.Id)
+            </div>
+            <div class="form-group">
+                <label asp-for="Menu.Naam" class="control-label"></label>
+                <input asp-for="Menu.Naam" class="form-control" />
+                <span asp-validation-for="Menu.Naam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Menu.KortingPercentage" class="control-label"></label>
+                <input asp-for="Menu.KortingPercentage" class="form-control" />
+                <span asp-validation-for="Menu.KortingPercentage" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="form-group">
+            <div class="row">
+                @{
+                    int cnt = 0;
+                    List<ToegewezenGerechten> gerechten = ViewBag.Gerechten;
+
+                    foreach (var gerecht in gerechten)
+                    {
+                        if (cnt++ % 3 == 0)
+                        {
+                        @:</div><div class="row">
+                        }
+                        @:<div class="col-4">
+                            <input type="checkbox" 
+                                   name="GerechtenBijMenu"
+                                   value="@gerecht.GerechtId"
+                                   @(Html.Raw(gerecht.Toegewezen ? "checked=\"checked\"" : "")) />
+                            @:  @gerecht.Omschrijving
+                        @:</div>
+                    }
+                @:</div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

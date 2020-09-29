@@ -1,0 +1,52 @@
+﻿@model SuperSushi.Data.Gerecht
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Gerecht</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*Cannot change the primary key so we change the scaffolded view to put the Id in a hidden type.
+        This way we still receive it in our Action (and check what we receive), but it looks much cleaner*@
+            <input asp-for="Id" class="form-control" type="hidden" />
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                @Html.DisplayFor(m => m.Id)
+            </div>
+            <div class="form-group">
+                <label asp-for="Soort" class="control-label"></label>
+                <select asp-for="Soort" asp-items="Html.GetEnumSelectList<SuperSushi.Data.Soort>()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="Soort" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Omschrijving" class="control-label"></label>
+                <input asp-for="Omschrijving" class="form-control" />
+                <span asp-validation-for="Omschrijving" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prijs" class="control-label"></label>
+                <input asp-for="Prijs" class="form-control" />
+                <span asp-validation-for="Prijs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
