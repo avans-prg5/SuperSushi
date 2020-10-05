@@ -29,7 +29,8 @@ namespace SusperSushi.Web.Controllers
             var model = repo.Create(menu);
             return View("Details",model);
         }
-
+        
+        [HttpGet]
         public IActionResult Edit(int? id)
         {
             if (id.HasValue)

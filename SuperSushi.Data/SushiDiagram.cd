@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="SuperSushi.Data.Menu">
+    <Position X="3.5" Y="6.25" Width="2.75" />
+    <AssociationLine Name="Bevat" Type="SuperSushi.Data.MenuGerecht">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.12" Y="0.289" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAEAAAAAgBAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Menu.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Bevat" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SuperSushi.Data.MenuGerecht">
+    <Position X="3.75" Y="4" Width="2.25" />
+    <AssociationLine Name="Gerecht" Type="SuperSushi.Data.Gerecht">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.034" Y="0.568" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Menu" Type="SuperSushi.Data.Menu">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.93" Y="0.402" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAACAAAAAAIBAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MenuGerecht.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Gerecht" />
+      <Property Name="Menu" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SuperSushi.Data.Gerecht">
+    <Position X="3.75" Y="1.5" Width="2.75" />
+    <AssociationLine Name="Onderdeelvan" Type="SuperSushi.Data.MenuGerecht">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.204" Y="0.747" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAEAAAAAAIAAAACAAIAAAAAA=</HashCode>
+      <FileName>Gerecht.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Soort" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Onderdeelvan" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Enum Name="SuperSushi.Data.Soort">
+    <Position X="8" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEEAAAAAAAAAAAAAAIACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gerecht.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
