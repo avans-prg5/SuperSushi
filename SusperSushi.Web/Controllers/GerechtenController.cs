@@ -9,7 +9,12 @@ namespace SusperSushi.Web.Controllers
 {
     public class GerechtenController : Controller
     {
-        IGerechtRepository repo = new GerechtRepositorySql();
+        readonly IGerechtRepository repo;
+
+        public GerechtenController(IGerechtRepository injectedRepository)
+        {
+            repo = injectedRepository;
+        }
 
         public IActionResult Index()
         {

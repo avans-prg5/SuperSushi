@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,7 +24,14 @@ namespace SusperSushi.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<SuperSushi.Data.SuperSushiContext>(options =>
+        options.UseSqlServer(
+            Configuration.GetConnectionString("SuperSushiSolution")));
+            services.AddScoped<SuperSushi.Data.IGerechtRepository, SuperSushi.Data.GerechtRepositorySql>();
+            services.AddScoped<SuperSushi.Data.IMenuRepository, SuperSushi.Data.MenuRepositorySql>();
+
             services.AddControllersWithViews();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

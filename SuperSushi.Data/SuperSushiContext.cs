@@ -7,6 +7,11 @@ namespace SuperSushi.Data
 {
     public class SuperSushiContext : DbContext
     {
+        public SuperSushiContext(DbContextOptions<SuperSushiContext> options)
+        : base(options)
+        {
+        }
+
         public DbSet<Gerecht> Gerechten { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<MenuGerecht> MenuGerechten { get; set; }
@@ -16,6 +21,8 @@ namespace SuperSushi.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
+                //fallback when the connectionstring from appsettings 
+                //is missing
                 optionsBuilder.UseSqlServer("Server=localhost;Database=SuperSushi;Trusted_Connection=True;");
             }
         }

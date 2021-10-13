@@ -39,9 +39,8 @@
             <div class="row">
                 @{
                     int cnt = 0;
-                    List<ToegewezenGerechten> gerechten = ViewBag.Gerechten;
-
-                    foreach (var gerecht in gerechten)
+                    
+                    foreach (var gerecht in Model.ToegewezenGerechten)
                     {
                         if (cnt++ % 3 == 0)
                         {

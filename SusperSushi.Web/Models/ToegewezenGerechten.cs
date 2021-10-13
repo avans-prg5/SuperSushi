@@ -1,8 +1,5 @@
 ﻿using SuperSushi.Data;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SusperSushi.Web.Models
 {
@@ -10,9 +7,10 @@ namespace SusperSushi.Web.Models
     { 
         public Menu Menu { get; set; }
         public List<int> GerechtenBijMenu { get; set; }
+        public List<ToegewezenGerecht> ToegewezenGerechten { get; set; }
     }
 
-    public class ToegewezenGerechten
+    public class ToegewezenGerecht
     {
         public int GerechtId { get; set; }
         public string Omschrijving { get; set; }
