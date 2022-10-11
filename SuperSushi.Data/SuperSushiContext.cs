@@ -23,7 +23,7 @@ namespace SuperSushi.Data
             {
                 //fallback when the connectionstring from appsettings 
                 //is missing
-                optionsBuilder.UseSqlServer("Server=localhost;Database=SuperSushi;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=localhost;Database=SuperSushiSolutionDB;Trusted_Connection=True;");
             }
         }
 
